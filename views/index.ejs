@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recall GPT</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="htmx.min.js"></script>
+</head>
+<body style="">
+    
+    <div class="container">
+        <div class="fade-in-top">        
+            <h1 style="margin-top: 5rem">Recall GPT</h1>
+            <h2>Test your active recall skills with the power of LLMs</h2>
+        </div>
+
+
+        <div class="fade-in-bottom">        
+            <form hx-post="/submit-form" hx-target="#uuid-message">
+                <div id="form-rows">
+                    <!-- Initial form row -->
+                    <div class="row mb-3" id="first">
+                        <div class="col">
+                            <input class="form-control" type="text" name="topic[]" placeholder="Topic">
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" name="description[]" placeholder="Description">
+                        </div>
+                    </div>
+                </div>
+                <!-- Button to add a new row -->
+                <div class="mb-3">
+                    <button class="btn btn-dark" hx-get="/new-row" hx-trigger="click" hx-target="#form-rows" hx-swap="beforeend">Add Row</button>
+                    <button class="btn btn-dark" type="submit" onclick="removeSave()">Save</button>
+                    <button class="btn btn-dark" hx-post="/gpt" hx-target="#chat-box" hx-swap="beforeend" onclick="removeUUID(); fadeIn('fixed-bottom-container')">Start Chatting</button>
+                </div>
+            </form>
+            <div id="uuid-message"></div>
+            <form id="uuid-box" hx-post="/retrieve-data" hx-target="#form-rows" hx-swap="beforeend" onsubmit="removeFirstElement()">
+                <div class="mb-3">
+                    <input class="form-control mb-3" type="text" name="uuid" placeholder="Enter UUID">
+                    <button type="submit" class="btn btn-dark">Retrieve Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container" id="chat-box">
+        
+    </div>
+    <div class="container" id="fixed-bottom-container" style="opacity: 0">
+        <form hx-post="/chat-message" hx-target="#chat-box" hx-swap="beforeend">
+            <div class="row">
+                <div class="col-10 mb-3">
+                        <input class="form-control" type="text" name="message" placeholder="Chat here">
+                </div> 
+                <div class="col-2 mb-3">
+                    <button type="submit" class="btn btn-dark w-100">Send</button>        
+                </div>
+              
+             </div>
+        </form>      
+    </div>
+    <div id="fixed-link">
+        
+    </div>
+    <br><br><br><br>
+    
+
+    <script>
+
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

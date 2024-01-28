@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+#fixed-bottom-container {
+    position: fixed;  /* Fixed position */
+    bottom: 0;       /* Stick to the bottom */
+    width: 100%;     /* Take full width */
+    left: 0;
+    right: 0;
+}
+
+#fixed-link {
+    position: fixed;  /* Fixed position */
+    top: 0;       /* Stick to the bottom */
+    right: 0;
+}
+
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+body {
+    background-color: var(--white);
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+
+.btn {
+    background-color: #424242;
+    font-weight:700;
+}
+
+
+.chat-mess {
+    border-top: 2px solid #808080;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 800;
+}
+h2 {
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    color: #808080;
+    font-weight: 800;
+}
+.role {
+    font-weight:700;
+}
+.message {
+    font-weight:500;
+}
+
+.fade-in-top {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeInTop 2s ease forwards;
+}
+
+.fade-in-bottom {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: fadeInBottom 2s ease forwards;
+}
+
+@keyframes fadeInTop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInBottom {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
